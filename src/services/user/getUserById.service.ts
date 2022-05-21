@@ -12,7 +12,9 @@ const getUserByIdService = async (id: string) => {
         return {status: 404, message: {error: "User not found."}}
     }
 
-    return {status: 200, message: user}
+    const {password, ...removePassword} = user
+
+    return {status: 200, message: removePassword}
 }
 
 

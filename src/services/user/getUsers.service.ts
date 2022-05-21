@@ -6,7 +6,12 @@ const getUsersService = async () => {
     const userRepository = AppDataSource.getRepository(User)
     const users = await userRepository.find()
 
-    return users
+    const removedPassword = users.map((user) => {
+        const {password, ...removePassword} = user
+        return removePassword
+    })
+
+    return removedPassword
 
 }
 
